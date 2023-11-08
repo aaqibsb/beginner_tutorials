@@ -32,6 +32,7 @@ Please make sure the following prerequisites are met before running this package
     ```
 
 3. **Source the Workspace**
+
     Source the ROS2 workspace to set the environment for the package.
 
     ```sh
@@ -39,6 +40,7 @@ Please make sure the following prerequisites are met before running this package
     ```
 
 4. **Run the Publisher Node**
+
     Run the Publisher node.
 
     ```sh
@@ -46,6 +48,7 @@ Please make sure the following prerequisites are met before running this package
     ```
 
 5. **Run the Subscriber Node**
+
     Open a new terminal and run the Subscriber node.
 
     ```sh
