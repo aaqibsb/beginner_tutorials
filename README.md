@@ -19,7 +19,7 @@ Please make sure the following prerequisites are met before running this package
 
    ```sh
    cd <your_ros2_workspace>/src
-   git clone https://github.com/aaqibsb/beginner_tutorials_ros2.git
+   git clone https://github.com/aaqibsb/beginner_tutorials.git
    ```
 
 2. **Build the Package**
@@ -44,7 +44,7 @@ Please make sure the following prerequisites are met before running this package
     Run the Publisher node.
 
     ```sh
-    ros2 run beginner_tutorials_ros2 publisher_member_function.cpp
+    ros2 run beginner_tutorials publisher_member_function.cpp
     ```
 
 5. **Run the Subscriber Node**
@@ -53,5 +53,5 @@ Please make sure the following prerequisites are met before running this package
 
     ```sh
     source install/setup.bash
-    ros2 run beginner_tutorials_ros2 subscriber_member_function.cpp
+    ros2 run beginner_tutorials subscriber_member_function.cpp
     ```
