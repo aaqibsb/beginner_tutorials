@@ -44,7 +44,7 @@ Please make sure the following prerequisites are met before running this package
     Run the Publisher node.
 
     ```sh
-    ros2 run beginner_tutorials publisher_member_function.cpp
+    ros2 run first_publisher_subscriber publisher_member_function.cpp
     ```
 
 5. **Run the Subscriber Node**
@@ -53,5 +53,5 @@ Please make sure the following prerequisites are met before running this package
 
     ```sh
     source install/setup.bash
-    ros2 run beginner_tutorials subscriber_member_function.cpp
+    ros2 run first_publisher_subscriber subscriber_member_function.cpp
     ```
