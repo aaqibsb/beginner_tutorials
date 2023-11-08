@@ -2,15 +2,14 @@
 
 ## Overview
 
-This ROS2 package publishes and subcribes to a topic with a custom message.
+This ROS2 package publishes and subcribes to a topic with a custom string message.
 
 ## Dependencies
 
 Please make sure the following prerequisites are met before running this package on your system:
 
-- ROS 2 Humble
+- ROS2 Humble
 - Ubuntu 22.04
-- Correct ROS2 workspace directory
 
 ## Build and Run Instructions
 
