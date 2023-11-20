@@ -1,0 +1,4 @@
+dawn@dawn-ROG-Zephyrus-G14-GA401QC-GA401QC:~/808X/ros2_ws/src/first_publisher_subscriber$ cpplint --filter=-build/c++11,+build/c++17,-build/namespaces,-build/include_order $( find . -name *.cpp | grep -vE -e "^./build/" )
+Done processing ./src/publisher_member_function.cpp
+Done processing ./src/subscriber_member_function.cpp
+
