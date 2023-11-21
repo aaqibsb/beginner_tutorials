@@ -48,7 +48,7 @@ void create_output(
   response->output = request->name + " said : " + request->talk;
 
   RCLCPP_INFO_STREAM(rclcpp::get_logger("rclcpp"),
-                     "Incoming request\n: " << request->name << " dialogue: %s" << request->talk);
+                     "Incoming Request\n: " << request->name << " speech: " << request->talk);
   RCLCPP_INFO_STREAM(rclcpp::get_logger("rclcpp"),
                      "Sending back Output Speech: [" << response->output << "]");
 }

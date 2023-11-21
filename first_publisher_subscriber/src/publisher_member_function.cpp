@@ -151,7 +151,7 @@ class MinimalPublisher : public rclcpp::Node {
                            "Output Speech: " << output_speech);
       } else {
         RCLCPP_FATAL_STREAM(rclcpp::get_logger("rclcpp"),
-                           "Failed to call service movie_script");
+                           "Failed to call service");
       }
     }
 
