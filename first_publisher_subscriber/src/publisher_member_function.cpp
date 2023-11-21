@@ -214,7 +214,13 @@ class MinimalPublisher : public rclcpp::Node {
   std::string output_msg = "";
 };
 
-
+/**
+ * @brief main function for publisher node
+ * 
+ * @param argc 
+ * @param argv 
+ * @return int 
+ */
 int main(int argc, char* argv[]) {
   rclcpp::init(argc, argv);
   rclcpp::spin(std::make_shared<MinimalPublisher>());
