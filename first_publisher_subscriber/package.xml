@@ -3,7 +3,7 @@
 <package format="3">
   <name>first_publisher_subscriber</name>
   <version>0.0.0</version>
-  <description>Minimal Pub/Sub using rclcpp</description>
+  <description>Minimal Service-Client and Pub/Sub using rclcpp</description>
   <maintainer email="aaqib.barodawala@gmail.com">dawn</maintainer>
   <license>Apache License 2.0</license>
 
@@ -11,6 +11,7 @@
 
   <depend>rclcpp</depend>
   <depend>std_msgs</depend>
+  <depend>custom_msg_srv</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

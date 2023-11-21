@@ -7,9 +7,29 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(builtin_interfaces REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+
+set(msg_files
+"msg/CustomMsg.msg"
+)
+
+set(srv_files
+"srv/CustomSrv.srv"
+)
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+${msg_files}
+${srv_files}
+
+DEPENDENCIES
+builtin_interfaces
+ADD_LINTER_TESTS
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
