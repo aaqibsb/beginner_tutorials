@@ -18,20 +18,21 @@
  * @brief Simple Subscriber for ROS2
  * @version 0.1
  * @date 2023-11-20
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
 #include <functional>
 #include <memory>
 #include <rclcpp/rclcpp.hpp>
-#include "custom_msg_srv/msg/custom_msg.hpp"
+
+#include <custom_msg_srv/msg/custom_msg.hpp>
 
 using std::placeholders::_1;
 
 /**
  * @brief ROS2 Subscriber
- * 
+ *
  */
 class MinimalSubscriber : public rclcpp::Node {
  public:
@@ -40,7 +41,7 @@ class MinimalSubscriber : public rclcpp::Node {
 
     /**
      * @brief Create Subscriber to "topic"
-     * 
+     *
      */
     subscription_ = this->create_subscription<custom_msg_srv::msg::CustomMsg>(
         "topic", 10, std::bind(&MinimalSubscriber::topic_callback, this, _1));
@@ -49,26 +50,26 @@ class MinimalSubscriber : public rclcpp::Node {
  private:
   /**
    * @brief Callback for "topic"
-   * 
-   * @param msg 
+   *
+   * @param msg
    */
   void topic_callback(const custom_msg_srv::msg::CustomMsg& msg) const {
-    RCLCPP_INFO_STREAM(this->get_logger(), "I heard: "<< msg.txt);
+    RCLCPP_INFO_STREAM(this->get_logger(), "I heard: " << msg.txt);
   }
 
   /**
    * @brief Pointer for Subscriber
-   * 
+   *
    */
   rclcpp::Subscription<custom_msg_srv::msg::CustomMsg>::SharedPtr subscription_;
 };
 
 /**
  * @brief main function for subscriber node
- * 
- * @param argc 
- * @param argv 
- * @return int 
+ *
+ * @param argc
+ * @param argv
+ * @return int
  */
 int main(int argc, char* argv[]) {
   rclcpp::init(argc, argv);

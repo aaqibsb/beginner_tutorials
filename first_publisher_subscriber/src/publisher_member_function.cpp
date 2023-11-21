@@ -18,20 +18,20 @@
  * @brief Simple Publisher with Service Client for ROS2
  * @version 0.1
  * @date 2023-11-20
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
 #include <chrono>
 #include <functional>
 #include <memory>
+#include <rclcpp/client.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/string.hpp>
 #include <string>
 
-#include "custom_msg_srv/msg/custom_msg.hpp"
-#include "custom_msg_srv/srv/custom_srv.hpp"
-#include <rclcpp/client.hpp>
+#include <custom_msg_srv/msg/custom_msg.hpp>
+#include <custom_msg_srv/srv/custom_srv.hpp>
 
 using namespace std::chrono_literals;
 using namespace rclcpp;
@@ -40,8 +40,8 @@ using namespace rclcpp;
  * member function as a callback from the timer. */
 
 /**
- * @brief ROS2 Publisher with Service Client  
- * 
+ * @brief ROS2 Publisher with Service Client
+ *
  */
 class MinimalPublisher : public rclcpp::Node {
  public:
@@ -49,36 +49,38 @@ class MinimalPublisher : public rclcpp::Node {
     RCLCPP_DEBUG_STREAM(this->get_logger(), "Initializing Publisher...");
 
     /**
-     * @brief Create Publisher to "topic" 
-     * 
+     * @brief Create Publisher to "topic"
+     *
      */
-    publisher_ = this->create_publisher<custom_msg_srv::msg::CustomMsg>("topic", 10);
+    publisher_ =
+        this->create_publisher<custom_msg_srv::msg::CustomMsg>("topic", 10);
 
     RCLCPP_DEBUG_STREAM(this->get_logger(), "Creating Service Client...");
 
     /**
      * @brief Create Service Client for "create_output" service
-     * 
+     *
      */
-    service_client_ = this->create_client<custom_msg_srv::srv::CustomSrv>("create_output");
+    service_client_ =
+        this->create_client<custom_msg_srv::srv::CustomSrv>("create_output");
 
     /**
      * @brief Declare publisher rate as a parameter
-     * 
+     *
      */
     this->declare_parameter("publisher_rate", 500);
 
     /**
      * @brief Variable to store the publisher rate
-     * 
+     *
      */
     int publisher_rate = this->get_parameter("publisher_rate").as_int();
 
     RCLCPP_DEBUG_STREAM(this->get_logger(), "Creating Timer Instance");
-    
+
     /**
      * @brief Timer to publish at intervals
-     * 
+     *
      */
     timer_ = this->create_wall_timer(
         std::chrono::milliseconds(publisher_rate),
@@ -88,14 +90,15 @@ class MinimalPublisher : public rclcpp::Node {
 
     /**
      * @brief Variable to store the message
-     * 
+     *
      */
     output_msg = get_output("Darth Vader", "Luke, I am your father!");
 
-    RCLCPP_DEBUG_STREAM(this->get_logger(), "Service Returned : " << output_msg);
+    RCLCPP_DEBUG_STREAM(this->get_logger(),
+                        "Service Returned : " << output_msg);
 
-    RCLCPP_DEBUG_STREAM(this->get_logger(), "Finished Initialization of Publisher.");
-
+    RCLCPP_DEBUG_STREAM(this->get_logger(),
+                        "Finished Initialization of Publisher.");
   }
 
  private:
@@ -118,13 +121,15 @@ class MinimalPublisher : public rclcpp::Node {
      *
      */
     if (!this->service_client_->wait_for_service(4s)) {
-      RCLCPP_ERROR_STREAM(this->get_logger(), "Service is not available, skipping publish...");
+      RCLCPP_ERROR_STREAM(this->get_logger(),
+                          "Service is not available, skipping publish...");
     } else {
       /**
        * @brief Create Service Request
        *
        */
-      auto request = std::make_shared<custom_msg_srv::srv::CustomSrv::Request>();
+      auto request =
+          std::make_shared<custom_msg_srv::srv::CustomSrv::Request>();
       request->name = _name;
       request->talk = _talk;
 
@@ -151,7 +156,7 @@ class MinimalPublisher : public rclcpp::Node {
                            "Output Speech: " << output_speech);
       } else {
         RCLCPP_FATAL_STREAM(rclcpp::get_logger("rclcpp"),
-                           "Failed to call service");
+                            "Failed to call service");
       }
     }
 
@@ -170,7 +175,8 @@ class MinimalPublisher : public rclcpp::Node {
     auto message = custom_msg_srv::msg::CustomMsg();
 
     if (!this->service_client_->wait_for_service(1s)) {
-      RCLCPP_WARN_STREAM(this->get_logger(), "Service is not available, skipping publish...");
+      RCLCPP_WARN_STREAM(this->get_logger(),
+                         "Service is not available, skipping publish...");
     } else {
       message.txt = this->output_msg + " " + std::to_string(count_++);
 
@@ -216,10 +222,10 @@ class MinimalPublisher : public rclcpp::Node {
 
 /**
  * @brief main function for publisher node
- * 
- * @param argc 
- * @param argv 
- * @return int 
+ *
+ * @param argc
+ * @param argv
+ * @return int
  */
 int main(int argc, char* argv[]) {
   rclcpp::init(argc, argv);

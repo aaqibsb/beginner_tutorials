@@ -15,31 +15,30 @@
 /**
  * @file service.cpp
  * @author Aaqib Barodawala (aaqib.barodawala@gmail.com)
- * @brief Simple Service Server for ROS2 
+ * @brief Simple Service Server for ROS2
  * @version 0.1
  * @date 2023-11-20
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
 #include <memory>
 #include <rclcpp/logging.hpp>
 
-#include "custom_msg_srv/srv/custom_srv.hpp"
-#include "rclcpp/rclcpp.hpp"
+#include <custom_msg_srv/srv/custom_srv.hpp>
+#include <rclcpp/rclcpp.hpp>
 
 /**
  * @brief Callback for Service
  *
- * @param request {It has two input strings}
+ * @param request Two Input Strings
  *  1. name : Name of the Person
  *  2. talk : Speech of the Person
- * @param response {It has one output string}
+ * @param response One Output String
  *  1. output : <name> + " said : "+<talk>
  */
 void create_output(
-    const std::shared_ptr<custom_msg_srv::srv::CustomSrv::Request>
-        request,
+    const std::shared_ptr<custom_msg_srv::srv::CustomSrv::Request> request,
     std::shared_ptr<custom_msg_srv::srv::CustomSrv::Response> response) {
   /**
    * @brief Construct the Output Speech
@@ -47,10 +46,12 @@ void create_output(
    */
   response->output = request->name + " said : " + request->talk;
 
-  RCLCPP_INFO_STREAM(rclcpp::get_logger("rclcpp"),
-                     "Incoming Request\n: " << request->name << " speech: " << request->talk);
-  RCLCPP_INFO_STREAM(rclcpp::get_logger("rclcpp"),
-                     "Sending back Output Speech: [" << response->output << "]");
+  RCLCPP_INFO_STREAM(
+      rclcpp::get_logger("rclcpp"),
+      "Incoming Request\n: " << request->name << " speech: " << request->talk);
+  RCLCPP_INFO_STREAM(
+      rclcpp::get_logger("rclcpp"),
+      "Sending back Output Speech: [" << response->output << "]");
 }
 
 /**
@@ -76,8 +77,8 @@ int main(int argc, char **argv) {
    */
   rclcpp::Service<custom_msg_srv::srv::CustomSrv>::SharedPtr
       create_output_service =
-          node->create_service<custom_msg_srv::srv::CustomSrv>(
-              "create_output", &create_output);
+          node->create_service<custom_msg_srv::srv::CustomSrv>("create_output",
+                                                               &create_output);
 
   RCLCPP_INFO_STREAM(rclcpp::get_logger("rclcpp"),
                      "Ready to generate Output Speech.");
