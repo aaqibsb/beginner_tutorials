@@ -38,27 +38,31 @@ Please make sure the following prerequisites are met before running this package
     ```
 
 3. **Source the Workspace**
+
     Source the ROS2 workspace to set the environment for the package.
 
     ```sh
     source install/setup.bash
     ```
 
-4. **Run the Service Node**
+5. **Run the Service Node**
+
     Run the Service Node.
 
     ```sh
     ros2 run first_publisher_subscriber service
     ```
 
-5. **Run the Publisher Node**
+6. **Run the Publisher Node**
+
     Open a new terminal and run the Publisher node.
 
     ```sh
     ros2 run first_publisher_subscriber talker
     ```
 
-6. **Run the Subscriber Node**
+7. **Run the Subscriber Node**
+
     Open a new terminal and run the Subscriber node.
 
     ```sh
@@ -66,7 +70,8 @@ Please make sure the following prerequisites are met before running this package
     ros2 run first_publisher_subscriber listener
     ```
 
-7. **To Launch all the nodes at once**
+8. **To Launch all the nodes at once**
+
     Close the previous working terminals and open a new terminal.
     Paste the following command in the terminal to make use of the launch file.
 
@@ -75,7 +80,8 @@ Please make sure the following prerequisites are met before running this package
     ros2 launch first_publisher_subscriber srv_launch.py
     ```
 
-8. **To make a service call**
+9. **To make a service call**
+
     Close the previous working terminals and open a new terminal.
     Paste the following command in the terminal to make use of the service.
 
