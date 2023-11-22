@@ -38,24 +38,55 @@ Please make sure the following prerequisites are met before running this package
     ```
 
 3. **Source the Workspace**
-
     Source the ROS2 workspace to set the environment for the package.
 
     ```sh
     source install/setup.bash
     ```
 
-4. **Run the Publisher Node**
-    Run the Publisher node.
+4. **Run the Service Node**
+    Run the Service Node.
+
+    ```sh
+    ros2 run first_publisher_subscriber service
+    ```
+
+5. **Run the Publisher Node**
+    Open a new terminal and run the Publisher node.
 
     ```sh
     ros2 run first_publisher_subscriber talker
     ```
 
-5. **Run the Subscriber Node**
+6. **Run the Subscriber Node**
     Open a new terminal and run the Subscriber node.
 
     ```sh
     source install/setup.bash
-    ros2 run beginner_tutorials_ros2 subscriber_member_function.cpp
+    ros2 run first_publisher_subscriber listener
+    ```
+
+7. **To Launch all the nodes at once**
+    Close the previous working terminals and open a new terminal.
+    Paste the following command in the terminal to make use of the launch file.
+
+    ```sh
+    source install/setup.bash
+    ros2 launch first_publisher_subscriber srv_launch.py
+    ```
+
+8. **To make a service call**
+    Close the previous working terminals and open a new terminal.
+    Paste the following command in the terminal to make use of the service.
+
+    ```sh
+    source install/setup.bash
+    ros2 run first_publisher_subscriber service
+    ```
+
+    Open a new terminal and paste the following.
+
+    ```sh
+    source install/setup.bash
+    ros2 service call /create_output custom_msg_srv/srv/CustomSrv "{name: 'WallE', talk: 'WAAAAAAALLLEEEEE'}"
     ```
