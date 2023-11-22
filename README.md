@@ -45,36 +45,21 @@ Please make sure the following prerequisites are met before running this package
     source install/setup.bash
     ```
 
-<<<<<<< HEAD
-4. **Run the Service Node**
-
-=======
 5. **Run the Service Node**
->>>>>>> c9de774c1e8e01433bdf28cc6a1661edc6817a32
     Run the Service Node.
 
     ```sh
     ros2 run first_publisher_subscriber service
     ```
 
-<<<<<<< HEAD
-5. **Run the Publisher Node**
-
-=======
 6. **Run the Publisher Node**
->>>>>>> c9de774c1e8e01433bdf28cc6a1661edc6817a32
     Open a new terminal and run the Publisher node.
 
     ```sh
     ros2 run first_publisher_subscriber talker
     ```
 
-<<<<<<< HEAD
-6. **Run the Subscriber Node**
-
-=======
 7. **Run the Subscriber Node**
->>>>>>> c9de774c1e8e01433bdf28cc6a1661edc6817a32
     Open a new terminal and run the Subscriber node.
 
     ```sh
@@ -82,12 +67,7 @@ Please make sure the following prerequisites are met before running this package
     ros2 run first_publisher_subscriber listener
     ```
 
-<<<<<<< HEAD
-7. **To Launch all the nodes at once**
-
-=======
 8. **To Launch all the nodes at once**
->>>>>>> c9de774c1e8e01433bdf28cc6a1661edc6817a32
     Close the previous working terminals and open a new terminal.
     Paste the following command in the terminal to make use of the launch file.
 
@@ -96,12 +76,7 @@ Please make sure the following prerequisites are met before running this package
     ros2 launch first_publisher_subscriber srv_launch.py
     ```
 
-<<<<<<< HEAD
-8. **To make a service call**
-
-=======
 9. **To make a service call**
->>>>>>> c9de774c1e8e01433bdf28cc6a1661edc6817a32
     Close the previous working terminals and open a new terminal.
     Paste the following command in the terminal to make use of the service.
 
