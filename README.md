@@ -46,6 +46,7 @@ Please make sure the following prerequisites are met before running this package
     ```
 
 5. **Run the Service Node**
+
     Run the Service Node.
 
     ```sh
@@ -53,6 +54,7 @@ Please make sure the following prerequisites are met before running this package
     ```
 
 6. **Run the Publisher Node**
+
     Open a new terminal and run the Publisher node.
 
     ```sh
@@ -60,6 +62,7 @@ Please make sure the following prerequisites are met before running this package
     ```
 
 7. **Run the Subscriber Node**
+
     Open a new terminal and run the Subscriber node.
 
     ```sh
@@ -68,6 +71,7 @@ Please make sure the following prerequisites are met before running this package
     ```
 
 8. **To Launch all the nodes at once**
+
     Close the previous working terminals and open a new terminal.
     Paste the following command in the terminal to make use of the launch file.
 
@@ -77,6 +81,7 @@ Please make sure the following prerequisites are met before running this package
     ```
 
 9. **To make a service call**
+
     Close the previous working terminals and open a new terminal.
     Paste the following command in the terminal to make use of the service.
 
