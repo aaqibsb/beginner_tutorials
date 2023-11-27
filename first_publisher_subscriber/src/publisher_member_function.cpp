@@ -15,8 +15,8 @@
 /**
  * @file publisher_member_function.cpp
  * @author Aaqib Barodawala (aaqib.barodawala@gmail.com)
- * @brief Simple Publisher with Service Client for ROS2
- * @version 0.1
+ * @brief Simple Publisher with tf2 and Service Client functionality for ROS2
+ * @version 0.2
  * @date 2023-11-20
  *
  * @copyright Copyright (c) 2023
@@ -29,6 +29,10 @@
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/string.hpp>
 #include <string>
+
+#include "geometry_msgs/msg/transform_stamped.hpp"
+#include "tf2/LinearMath/Quaternion.h"
+#include "tf2_ros/transform_broadcaster.h"
 
 #include <custom_msg_srv/msg/custom_msg.hpp>
 #include <custom_msg_srv/srv/custom_srv.hpp>
@@ -69,6 +73,13 @@ class MinimalPublisher : public rclcpp::Node {
      *
      */
     this->declare_parameter("publisher_rate", 500);
+
+    /**
+     * @brief Create a tf broadcaster instance
+     * 
+     */
+    tf_broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
+
 
     /**
      * @brief Variable to store the publisher rate
@@ -163,6 +174,54 @@ class MinimalPublisher : public rclcpp::Node {
     return output_speech;
   }
 
+
+  /**
+   * @brief Method to publish tranform from /world frame to /talk frame
+   * 
+   */
+  void publish_transform() {
+    /**
+     * @brief Build geometry message
+     * 
+     */
+    geometry_msgs::msg::TransformStamped t;
+
+    /**
+     * @brief Set time stamp and header frames
+     *  parent : /world
+     *  child  : /talk
+     */
+    t.header.stamp = this->get_clock()->now();
+    t.header.frame_id = "world";
+    t.child_frame_id = "talk";
+
+    /**
+     * @brief Set translation to (20, 50, 0)
+     * 
+     */
+    t.transform.translation.x = 20.0;
+    t.transform.translation.y = 50.0;
+    t.transform.translation.z = 0.0;
+
+    /**
+     * @brief Set yaw rotation as -180 deg / -1.57 rad
+     * 
+     */
+    tf2::Quaternion q;
+    q.setRPY(0, 0, -1.57);
+    t.transform.rotation.x = q.x();
+    t.transform.rotation.y = q.y();
+    t.transform.rotation.z = q.z();
+    t.transform.rotation.w = q.w();
+
+    /**
+     * @brief Send transform
+     * 
+     */
+    tf_broadcaster_->sendTransform(t);
+  }
+
+
   /**
    * @brief Timer callback that publishes messages periodically
    *
@@ -175,17 +234,17 @@ class MinimalPublisher : public rclcpp::Node {
     auto message = custom_msg_srv::msg::CustomMsg();
 
     if (!this->service_client_->wait_for_service(1s)) {
-      RCLCPP_WARN_STREAM(this->get_logger(),
-                         "Service is not available, skipping publish...");
+      RCLCPP_WARN_STREAM(this->get_logger(), "Service is not available, skipping publish...");
     } else {
       message.txt = this->output_msg + " " + std::to_string(count_++);
 
       /**
-       * @brief Publish the message
+       * @brief Publish the message and transform
        *
        */
       RCLCPP_INFO_STREAM(this->get_logger(), "Publishing: " << message.txt);
       publisher_->publish(message);
+      publish_transform();
     }
   }
 
@@ -194,6 +253,12 @@ class MinimalPublisher : public rclcpp::Node {
    *
    */
   rclcpp::TimerBase::SharedPtr timer_;
+
+  /**
+   * @brief Pointer for the Broadcaster
+   * 
+   */
+  std::unique_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
 
   /**
    * @brief Pointer for the Publisher
