@@ -22,10 +22,9 @@
  * @copyright Copyright (c) 2023
  *
  */
+#include <custom_msg_srv/srv/custom_srv.hpp>
 #include <memory>
 #include <rclcpp/logging.hpp>
-
-#include <custom_msg_srv/srv/custom_srv.hpp>
 #include <rclcpp/rclcpp.hpp>
 
 /**

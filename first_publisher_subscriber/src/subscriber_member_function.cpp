@@ -22,11 +22,10 @@
  * @copyright Copyright (c) 2023
  *
  */
+#include <custom_msg_srv/msg/custom_msg.hpp>
 #include <functional>
 #include <memory>
 #include <rclcpp/rclcpp.hpp>
-
-#include <custom_msg_srv/msg/custom_msg.hpp>
 
 using std::placeholders::_1;
 

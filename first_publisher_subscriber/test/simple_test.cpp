@@ -42,17 +42,20 @@ class TaskPlanningFixture : public testing::Test {
   TaskPlanningFixture() : node_(std::make_shared<rclcpp::Node>("simple_test")) {
     RCLCPP_INFO_STREAM(node_->get_logger(), "Constructor Completed!");
   }
-  
+
   /**
    * @brief Set up actions that should occur before every test instance.
    * 
    */
   void SetUp() override {
-    bool start_result = StartROSExec("first_publisher_subscriber", "minimal_publisher", "talker");
+    bool start_result = StartROSExec(
+        "first_publisher_subscriber",
+        "minimal_publisher",
+        "talker");
     ASSERT_TRUE(start_result);
     RCLCPP_INFO_STREAM(node_->get_logger(), "Setup Completed!");
   }
-  
+
   /**
    * @brief Tear down actions that should occur after every test instance.
    * 
@@ -125,7 +128,7 @@ TEST_F(TaskPlanningFixture, TrueIsTrueTest) {
 
   // Subscribe to topic
   using SUBSCRIBER =
-      rclcpp::Subscription<custom_msg_srv::msg::CustomMsg>::SharedPtr;
+    rclcpp::Subscription<custom_msg_srv::msg::CustomMsg>::SharedPtr;
   bool hasData = false;
   SUBSCRIBER subscription =
       node_->create_subscription<custom_msg_srv::msg::CustomMsg>(
@@ -136,7 +139,7 @@ TEST_F(TaskPlanningFixture, TrueIsTrueTest) {
             hasData = true;
           });
 
-  
+
   // Check whether we get data within 6 seconds
   using timer = std::chrono::system_clock;
   using namespace std::chrono_literals;
