@@ -72,7 +72,7 @@ class MinimalPublisher : public rclcpp::Node {
      * @brief Declare publisher rate as a parameter
      *
      */
-    this->declare_parameter("publisher_rate", 500);
+    this->declare_parameter("publisher_rate", 200);
 
     /**
      * @brief Create a tf broadcaster instance
@@ -131,7 +131,7 @@ class MinimalPublisher : public rclcpp::Node {
      * @brief Wait for availability of service
      *
      */
-    if (!this->service_client_->wait_for_service(4s)) {
+    if (!this->service_client_->wait_for_service(1s)) {
       RCLCPP_ERROR_STREAM(this->get_logger(),
                           "Service is not available, skipping publish...");
     } else {
@@ -223,30 +223,35 @@ class MinimalPublisher : public rclcpp::Node {
 
 
   /**
-   * @brief Timer callback that publishes messages periodically
-   *
-   */
-  void timer_callback() {
-    /**
-     * @brief Build the message
-     *
-     */
+    * @brief Build the message. If service is not available, publish default message
+    * 
+    */
+  void publish_message() {
     auto message = custom_msg_srv::msg::CustomMsg();
 
-    if (!this->service_client_->wait_for_service(1s)) {
-      RCLCPP_WARN_STREAM(this->get_logger(), "Service is not available, skipping publish...");
-    } else {
-      message.txt = this->output_msg + " " + std::to_string(count_++);
-
-      /**
-       * @brief Publish the message and transform
-       *
-       */
+    if (!this->service_client_->wait_for_service(100ms)) {
+      RCLCPP_WARN_STREAM(this->get_logger(), "Service is not available, Publishing Default Message!");
+      message.txt = "Luke, I am your father!" + std::to_string(count_++);
       RCLCPP_INFO_STREAM(this->get_logger(), "Publishing: " << message.txt);
       publisher_->publish(message);
-      publish_transform();
+    } else {
+      message.txt = this->output_msg + " " + std::to_string(count_++);
+      RCLCPP_INFO_STREAM(this->get_logger(), "Publishing: " << message.txt);
+      publisher_->publish(message);
     }
   }
+
+
+  /**
+   * @brief Timer callback that publishes messages and transform periodically
+   * 
+   */
+  void timer_callback() {
+      RCLCPP_DEBUG_STREAM(this->get_logger(), "Timer Callback called!");
+      publish_message();
+      publish_transform();
+  }
+
 
   /**
    * @brief Timer parameter

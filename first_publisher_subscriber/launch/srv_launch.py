@@ -12,7 +12,7 @@ def generate_launch_description():
         # Declare the publisher rate as launch argument
         DeclareLaunchArgument(
             "publisher_rate",
-            default_value = "500",
+            default_value = "200",
             description="Publisher rate"
         ),
 
