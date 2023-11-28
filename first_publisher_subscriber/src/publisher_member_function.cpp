@@ -227,8 +227,8 @@ class MinimalPublisher : public rclcpp::Node {
     auto message = custom_msg_srv::msg::CustomMsg();
 
     if (!this->service_client_->wait_for_service(100ms)) {
-      RCLCPP_WARN_STREAM(this->get_logger(), "Service unavailable," +
-                                                 "Publishing Default Message!");
+      RCLCPP_WARN_STREAM(this->get_logger(),
+                         "Service unavailable, Publishing Default Message!");
       message.txt = "Luke, I am your father!" + std::to_string(count_++);
       RCLCPP_INFO_STREAM(this->get_logger(), "Publishing: " << message.txt);
       publisher_->publish(message);

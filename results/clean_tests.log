@@ -1,0 +1,132 @@
+UpdateCTestConfiguration  from :/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/CTestConfiguration.ini
+Parse Config file:/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/CTestConfiguration.ini
+   Site: cecc3df97370
+   Build name: (empty)
+ Add coverage exclude regular expressions.
+Create new tag: 20231128-2055 - Experimental
+UpdateCTestConfiguration  from :/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/CTestConfiguration.ini
+Parse Config file:/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/CTestConfiguration.ini
+Test project /home/dawn/808X/ros2_ws/build/first_publisher_subscriber
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: first_publisher_subscriber_test
+
+1: Test command: /usr/bin/python3.10 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/first_publisher_subscriber_test.gtest.xml" "--package-name" "first_publisher_subscriber" "--output-file" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/ament_cmake_gtest/first_publisher_subscriber_test.txt" "--command" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/first_publisher_subscriber_test" "--gtest_output=xml:/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/first_publisher_subscriber_test.gtest.xml"
+1: Test timeout computed to be: 60
+1: -- run_test.py: invoking following command in '/home/dawn/808X/ros2_ws/build/first_publisher_subscriber':
+1:  - /home/dawn/808X/ros2_ws/build/first_publisher_subscriber/first_publisher_subscriber_test --gtest_output=xml:/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/first_publisher_subscriber_test.gtest.xml
+1: [==========] Running 1 test from 1 test suite.
+1: [----------] Global test environment set-up.
+1: [----------] 1 test from TaskPlanningFixture
+1: [ RUN      ] TaskPlanningFixture.TrueIsTrueTest
+1: [INFO] [1701204938.499254554] [simple_test]: Constructor Completed!
+1: [INFO] [1701204939.732728796] [simple_test]: Setup Completed!
+1: Starting TEST!
+1: [INFO] [1701204940.234496709] [simple_test]: I heard: 'Luke, I am your father!1'
+1: [INFO] [1701204940.734771851] [simple_test]: I heard: 'Luke, I am your father!2'
+1: [INFO] [1701204941.234655313] [simple_test]: I heard: 'Luke, I am your father!3'
+1: [INFO] [1701204941.734831362] [simple_test]: I heard: 'Luke, I am your father!4'
+1: [INFO] [1701204942.234518205] [simple_test]: I heard: 'Luke, I am your father!5'
+1: [INFO] [1701204942.734655051] [simple_test]: I heard: 'Luke, I am your father!6'
+1: [INFO] [1701204943.234659175] [simple_test]: I heard: 'Luke, I am your father!8'
+1: [INFO] [1701204943.734424444] [simple_test]: I heard: 'Luke, I am your father!11'
+1: [INFO] [1701204944.234333953] [simple_test]: I heard: 'Luke, I am your father!13'
+1: [INFO] [1701204944.734654831] [simple_test]: I heard: 'Luke, I am your father!16'
+1: [INFO] [1701204945.234768926] [simple_test]: I heard: 'Luke, I am your father!18'
+1: [INFO] [1701204945.740963471] [simple_test]: Teardown Completed!
+1: [       OK ] TaskPlanningFixture.TrueIsTrueTest (7590 ms)
+1: [----------] 1 test from TaskPlanningFixture (7590 ms total)
+1: 
+1: [----------] Global test environment tear-down
+1: [==========] 1 test from 1 test suite ran. (7590 ms total)
+1: [  PASSED  ] 1 test.
+1: ROS Shutdown Complete!
+1: -- run_test.py: return code 0
+1: -- run_test.py: inject classname prefix into gtest result file '/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/first_publisher_subscriber_test.gtest.xml'
+1: -- run_test.py: verify result file '/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/first_publisher_subscriber_test.gtest.xml'
+1/6 Test #1: first_publisher_subscriber_test ...   Passed    7.75 sec
+test 2
+    Start 2: cppcheck
+
+2: Test command: /usr/bin/python3.10 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/cppcheck.xunit.xml" "--package-name" "first_publisher_subscriber" "--output-file" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/ament_cppcheck/cppcheck.txt" "--command" "/opt/ros/humble/bin/ament_cppcheck" "--xunit-file" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/cppcheck.xunit.xml"
+2: Test timeout computed to be: 300
+2: -- run_test.py: invoking following command in '/home/dawn/808X/ros2_ws/src/first_publisher_subscriber':
+2:  - /opt/ros/humble/bin/ament_cppcheck --xunit-file /home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/cppcheck.xunit.xml
+2: cppcheck 2.7 has known performance issues and therefore will not be used, set the AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS environment variable to override this.
+2: -- run_test.py: return code 0
+2: -- run_test.py: verify result file '/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/cppcheck.xunit.xml'
+2/6 Test #2: cppcheck ..........................   Passed    0.11 sec
+test 3
+    Start 3: flake8
+
+3: Test command: /usr/bin/python3.10 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/flake8.xunit.xml" "--package-name" "first_publisher_subscriber" "--output-file" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/ament_flake8/flake8.txt" "--command" "/opt/ros/humble/bin/ament_flake8" "--xunit-file" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/flake8.xunit.xml"
+3: Test timeout computed to be: 60
+3: -- run_test.py: invoking following command in '/home/dawn/808X/ros2_ws/src/first_publisher_subscriber':
+3:  - /opt/ros/humble/bin/ament_flake8 --xunit-file /home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/flake8.xunit.xml
+3: 
+3: 2 files checked
+3: No problems found
+3: 
+3: Checked files:
+3: 
+3: * ./launch/srv_launch.py
+3: * ./launch/rb_replay_launch.py
+3: -- run_test.py: return code 0
+3: -- run_test.py: verify result file '/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/flake8.xunit.xml'
+3/6 Test #3: flake8 ............................   Passed    0.20 sec
+test 4
+    Start 4: lint_cmake
+
+4: Test command: /usr/bin/python3.10 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/lint_cmake.xunit.xml" "--package-name" "first_publisher_subscriber" "--output-file" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/ament_lint_cmake/lint_cmake.txt" "--command" "/opt/ros/humble/bin/ament_lint_cmake" "--xunit-file" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/lint_cmake.xunit.xml"
+4: Test timeout computed to be: 60
+4: -- run_test.py: invoking following command in '/home/dawn/808X/ros2_ws/src/first_publisher_subscriber':
+4:  - /opt/ros/humble/bin/ament_lint_cmake --xunit-file /home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/lint_cmake.xunit.xml
+4: 
+4: No problems found
+4: -- run_test.py: return code 0
+4: -- run_test.py: verify result file '/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/lint_cmake.xunit.xml'
+4/6 Test #4: lint_cmake ........................   Passed    0.10 sec
+test 5
+    Start 5: pep257
+
+5: Test command: /usr/bin/python3.10 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/pep257.xunit.xml" "--package-name" "first_publisher_subscriber" "--output-file" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/ament_pep257/pep257.txt" "--command" "/opt/ros/humble/bin/ament_pep257" "--xunit-file" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/pep257.xunit.xml"
+5: Test timeout computed to be: 60
+5: -- run_test.py: invoking following command in '/home/dawn/808X/ros2_ws/src/first_publisher_subscriber':
+5:  - /opt/ros/humble/bin/ament_pep257 --xunit-file /home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/pep257.xunit.xml
+5: checking ./launch/rb_replay_launch.py
+5: checking ./launch/srv_launch.py
+5: No problems found
+5: -- run_test.py: return code 0
+5: -- run_test.py: verify result file '/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/pep257.xunit.xml'
+5/6 Test #5: pep257 ............................   Passed    0.15 sec
+test 6
+    Start 6: xmllint
+
+6: Test command: /usr/bin/python3.10 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/xmllint.xunit.xml" "--package-name" "first_publisher_subscriber" "--output-file" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/ament_xmllint/xmllint.txt" "--command" "/opt/ros/humble/bin/ament_xmllint" "--xunit-file" "/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/xmllint.xunit.xml"
+6: Test timeout computed to be: 60
+6: -- run_test.py: invoking following command in '/home/dawn/808X/ros2_ws/src/first_publisher_subscriber':
+6:  - /opt/ros/humble/bin/ament_xmllint --xunit-file /home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/xmllint.xunit.xml
+6: File 'package.xml' is valid
+6: 
+6: No problems found
+6: -- run_test.py: return code 0
+6: -- run_test.py: verify result file '/home/dawn/808X/ros2_ws/build/first_publisher_subscriber/test_results/first_publisher_subscriber/xmllint.xunit.xml'
+6/6 Test #6: xmllint ...........................   Passed    0.22 sec
+
+[0;32m100% tests passed[0;0m, 0 tests failed[0;0m out of 6
+
+Label Time Summary:
+cppcheck      =   0.11 sec*proc (1 test)
+flake8        =   0.20 sec*proc (1 test)
+gtest         =   7.75 sec*proc (1 test)
+lint_cmake    =   0.10 sec*proc (1 test)
+linter        =   0.77 sec*proc (5 tests)
+pep257        =   0.15 sec*proc (1 test)
+xmllint       =   0.22 sec*proc (1 test)
+
+Total Test time (real) =   8.53 sec

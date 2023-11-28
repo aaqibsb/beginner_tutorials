@@ -14,6 +14,7 @@ find_package(geometry_msgs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 
+# include dependencies
 set(THIS_PACKAGE_INCLUDE_DEPENDS
     rclcpp
     rclcpp_action
@@ -30,38 +31,31 @@ ament_target_dependencies(talker rclcpp std_msgs custom_msg_srv geometry_msgs tf
 add_executable(listener src/subscriber_member_function.cpp)
 ament_target_dependencies(listener rclcpp std_msgs custom_msg_srv)
 
-# add_executable(first_publisher_subscriber_test test/simple_test.cpp)
-# ament_target_dependencies(first_publisher_subscriber_test rclcpp custom_msg_srv)
-
+# Executables
 install(TARGETS
   talker
   listener
   service
   DESTINATION lib/${PROJECT_NAME})
 
+# Launch
 install(DIRECTORY
 launch
 DESTINATION share/${PROJECT_NAME}/
 )
 
-
+# Testing
 if(BUILD_TESTING)
   find_package(ament_cmake_gtest REQUIRED)
   find_package(ament_lint_auto REQUIRED)
-  # the following line skips the linter which checks for copyrights
-  # comment the line when a copyright and license is added to all source files
+
   set(ament_cmake_copyright_FOUND TRUE)
-  # the following line skips cpplint (only works in a git repo)
-  # comment the line when this package is in a git repo and when
-  # a copyright and license is added to all source files
   set(ament_cmake_cpplint_FOUND TRUE)
-  # ament_lint_auto_find_test_dependencies()
   set(ament_cmake_uncrustify_FOUND TRUE)
 
   ament_lint_auto_find_test_dependencies()
 
-  set(TESTFILES
-    test/simple_test.cpp)
+  set(TESTFILES test/simple_test.cpp)
   ament_add_gtest(${PROJECT_NAME}_test ${TESTFILES})
   ament_target_dependencies(${PROJECT_NAME}_test ${THIS_PACKAGE_INCLUDE_DEPENDS})
 endif()
