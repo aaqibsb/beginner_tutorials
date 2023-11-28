@@ -25,7 +25,7 @@ add_executable(service src/service.cpp)
 ament_target_dependencies(service rclcpp custom_msg_srv)
 
 add_executable(talker src/publisher_member_function.cpp)
-ament_target_dependencies(talker rclcpp std_msgs custom_msg_srv geometry_msgs tf2 tf2_ros) 
+ament_target_dependencies(talker rclcpp std_msgs custom_msg_srv geometry_msgs tf2 tf2_ros)
 
 add_executable(listener src/subscriber_member_function.cpp)
 ament_target_dependencies(listener rclcpp std_msgs custom_msg_srv)
@@ -43,7 +43,7 @@ install(DIRECTORY
 launch
 DESTINATION share/${PROJECT_NAME}/
 )
-  
+
 
 if(BUILD_TESTING)
   find_package(ament_cmake_gtest REQUIRED)
@@ -60,7 +60,7 @@ if(BUILD_TESTING)
 
   ament_lint_auto_find_test_dependencies()
 
-  set(TESTFILES 
+  set(TESTFILES
     test/simple_test.cpp)
   ament_add_gtest(${PROJECT_NAME}_test ${TESTFILES})
   ament_target_dependencies(${PROJECT_NAME}_test ${THIS_PACKAGE_INCLUDE_DEPENDS})
