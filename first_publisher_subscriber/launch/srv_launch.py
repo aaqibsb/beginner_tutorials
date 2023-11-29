@@ -54,7 +54,7 @@ def generate_launch_description():
             arguments=['--ros-args', '--log-level', LaunchConfiguration('log_level')]
         ),
 
-        # Laucnh Talker node
+        # Launch Talker node
         Node(
             package="first_publisher_subscriber",
             executable="talker",
@@ -63,7 +63,7 @@ def generate_launch_description():
             parameters=[{"pub_rate": LaunchConfiguration("publisher_rate")}]
         ),
 
-        # Laucnh Listener node
+        # Launch Listener node
         Node(
             package="first_publisher_subscriber",
             executable="listener",
