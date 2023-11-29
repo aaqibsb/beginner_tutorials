@@ -2,4 +2,5 @@ dawn@dawn-ROG-Zephyrus-G14-GA401QC-GA401QC:~/808X/ros2_ws/src/first_publisher_su
 Done processing ./src/publisher_member_function.cpp
 Done processing ./src/service.cpp
 Done processing ./src/subscriber_member_function.cpp
+Done processing ./test/simple_test.cpp
 

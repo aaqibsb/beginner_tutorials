@@ -1,4 +1,4 @@
-# ROS2 Humble - Simple Publisher and Subscriber with Service
+# ROS2 Humble - Simple Publisher and Subscriber with Service, tf2, rosbag and Unit Testing
 
 ## Overview
 
@@ -7,7 +7,7 @@ This ROS2 workspace contains two packages:
 1. first_publisher_subscriber: Publishes and subcribes to a topic with service-client functionality.
 2. custom_msg_srv: Hosts custom message(.msg) and service(.srv) files
 
-Results folder has the cpplint and cppcheck outputs along with screenshots of the commands running in the terminal.
+Results folder has the cpplint and cppcheck outputs along with screenshots of all the commands running in the terminal.
 
 ## Dependencies
 
@@ -95,4 +95,62 @@ Please make sure the following prerequisites are met before running this package
     ```sh
     source install/setup.bash
     ros2 service call /create_output custom_msg_srv/srv/CustomSrv "{name: 'WallE', talk: 'WAAAAAAALLLEEEEE'}"
+    ```
+
+10. **To check the tf2 tree**
+
+    Open a terminal and run the Publisher node.
+
+    ```sh
+    source install/setup.bash
+    ros2 run first_publisher_subscriber talker
+    ```
+
+    Open a new terminal and run the following commands to verify tf2 tree.
+
+    ```sh
+    # to view frames in the terminal
+    ros2 run tf2_ros tf2_echo world talk
+
+    # to save frames in a pdf format
+    ros2 run tf2_tools view_frames
+    ```
+
+11. **To run test cases**
+
+    Open a terminal and run the following commands in a terminal.
+
+    ```sh
+    # to run the test cases
+    colcon test --packages-select first_publisher_subscriber
+    
+    # to view the test results
+    cat log/latest_test/first_publisher_subscriber/stdout_stderr.log
+    ```
+
+12. **To launch and enable rosbag recorder**
+
+    Open a terminal and run the following commands in a terminal.
+
+    ```sh
+    source install/setup.bash
+    ros2 launch first_publisher_subscriber srv_launch.py  is_record_bag:=true  bag_file_path:=rosbag/talker
+    ```
+
+13. **To inspect rosbag recorder**
+
+    Open a terminal and run the following commands in a terminal. Here, The rosbag file was moved to the results folder.
+
+    ```sh
+    source install/setup.bash
+    ros2 bag info ./src/results/rosbag/talker 
+    ```
+
+14. **To launch rosbag playback**
+
+    Open a terminal and run the following commands in a terminal.
+
+    ```sh
+    source install/setup.bash
+    ros2 launch first_publisher_subscriber rb_replay_launch.py bag_file_path:=./src/results/rosbag/talker 
     ```
